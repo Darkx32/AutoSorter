@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.container p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+main {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.section-header, .cabecalho-secao {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.projetos-card {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projetos-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.projetos-card h3 {
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.linha-tempo {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.linha-tempo::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #667eea, #764ba2);
+    transform: translateX(-50%);
+}
+
+.item-linha-tempo {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.item-linha-tempo:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.marcador-linha-tempo {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 0 0 4px #e2e8f0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.conteudo-linha-tempo {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    width: 45%;
+    border: 1px solid #e2e8f0;
+}
+
+.item-linha-tempo:nth-child(odd) .conteudo-linha-tempo {
+    margin-right: 55%;
+}
+
+.item-linha-tempo:nth-child(even) .conteudo-linha-tempo {
+    margin-left: 55%;
+}
+
+.conteudo-linha-tempo h3 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.grade-ferramentas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.cartao-ferramenta {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.cartao-ferramenta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.icone-ferramenta {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cartao-ferramenta h4 {
+    color: #2d3748;
+    font-size: 1.1rem;
+}
+
+/* CSS para a seção da equipe */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.team-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.team-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #667eea;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-card h3 {
+    color: #2d3748;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-card p {
+    color: #718096;
+    font-size: 1rem;
+}
+
+footer{
+  background-color: #764ba2;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-family: Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    .container { padding: 1rem; }
+    .projetos-grid { grid-template-columns: 1fr; }
+    .linha-tempo::before { left: 20px; }
+    .marcador-linha-tempo { left: 20px; }
+    .item-linha-tempo { flex-direction: column; }
+    .conteudo-linha-tempo { width: calc(100% - 60px); margin-left: 60px !important; margin-right: 0 !important; }
+    .grade-ferramentas { grid-template-columns: repeat(2, 1fr); }
+}
