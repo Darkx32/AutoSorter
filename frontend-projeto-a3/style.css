@@ -74,7 +74,12 @@ h2 {
     color: #2d3748;
     margin-bottom: 1rem;
 }
-
+.about-project{
+    color: #2d3748 !important;
+}
+.etapas {
+    color: #2d3748 !important;
+}
 .linha-tempo {
     position: relative;
     margin: 2rem 0;
