@@ -174,7 +174,27 @@ h2 {
     font-size: 1.1rem;
 }
 
+.project-link {
+    margin: 30px;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    transform: translateY(-8px);
+    cursor: pointer;
+}
+
 /* CSS para a seção da equipe */
+
+.card-link{
+    text-decoration: none; /* tira o sublinhado do link */
+    color: inherit; /* herda cor do texto normal */
+    display: inline-block;
+}
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -195,6 +215,8 @@ h2 {
 .team-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    background: #eaeaea;
+    cursor: pointer;
 }
 
 .team-avatar {
