@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+
+.logo-unifg {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.logo-unifg img {
+  max-width: 220px; 
+  height: auto;
+}
+
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: linear-gradient(180deg, #000000 0%, #200056 100%);
