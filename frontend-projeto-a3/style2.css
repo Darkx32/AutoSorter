@@ -14,7 +14,7 @@ body {
 
 .container {
     display: flex;
-    justify-content: center; /* Centraliza no eixo horizontal */
+    justify-content: center; 
     align-items: center; 
     max-width: 1250px;
     margin: 0 auto;
