@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+
+.logo-unifg {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.logo-unifg img {
+  max-width: 220px; 
+  height: auto;
+}
+
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: linear-gradient(180deg, #000000 0%, #200056 100%);
@@ -174,7 +185,27 @@ h2 {
     font-size: 1.1rem;
 }
 
+.project-link {
+    margin: 30px;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    transform: translateY(-8px);
+    cursor: pointer;
+}
+
 /* CSS para a seção da equipe */
+
+.card-link{
+    text-decoration: none; /* tira o sublinhado do link */
+    color: inherit; /* herda cor do texto normal */
+    display: inline-block;
+}
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -195,6 +226,8 @@ h2 {
 .team-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    background: #eaeaea;
+    cursor: pointer;
 }
 
 .team-avatar {
@@ -241,4 +274,37 @@ footer{
     .item-linha-tempo { flex-direction: column; }
     .conteudo-linha-tempo { width: calc(100% - 60px); margin-left: 60px !important; margin-right: 0 !important; }
     .grade-ferramentas { grid-template-columns: repeat(2, 1fr); }
+}
+
+.call-to-action {
+    text-align: center; 
+    margin-top: 50px;
+    margin-bottom: 50px; 
+}
+
+.btn-projeto {
+    display: inline-block;
+    padding: 15px 35px; 
+    border-radius: 8px; 
+    background-color: #007bff; 
+    color: white; 
+    text-decoration: none; 
+    font-size: 1.2em; 
+    font-weight: 600; 
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    border: none; 
+}
+
+.btn-projeto:hover {
+    background-color: #0056b3; 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
+}
+
+.btn-projeto:active {
+    transform: translateY(0); 
+    background-color: #004085; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
