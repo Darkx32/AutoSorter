@@ -1,0 +1,41 @@
+# Node modules
+node_modules/
+
+# Build artifacts
+dist/
+out/
+build/
+
+# Electron-specific
+.electron-builder/
+release/
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*~
+*.swp
+
+# OS and IDE specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Environment variables
+.env
+.env.*
+
+# Executables
+*.exe
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+
+# Package manager lock files (if not explicitly desired to be tracked)
+package-lock.json
+yarn.lock

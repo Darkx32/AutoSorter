@@ -1,0 +1,45 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+import {app, BrowserWindow} from 'electron';
+
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
+
+if (!app.requestSingleInstanceLock()) {
+  app.quit();
+  process.exit(0);
+}
+
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: path.join(dirname, "./preload.js")
+    },
+  });
+  win.webContents.on("did-finish-load", () => {
+    win.webContents.send("main-process-message", (new Date).toLocaleString())
+  })
+
+  if (process.env.VITE_DEV_SERVER_URL) {
+    win.loadURL(process.env.VITE_DEV_SERVER_URL)
+    win.webContents.openDevTools() 
+  }
+
+  win.loadFile('./src/index.html');
+}
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});
+
+app.whenReady().then(createWindow);

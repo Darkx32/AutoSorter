@@ -1,16 +1,24 @@
 {
   "name": "frontend-projeto-a3",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "electron/main.js",
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev",
+    "prebuild": "electron-vite build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "electron": "^38.1.2"
-  }
+    "electron": "^38.2.2"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.0",
+    "electron-vite": "^4.0.1",
+    "node": "^24.10.0",
+    "vite": "^7.1.9"
+  },
+  "type": "module"
 }
