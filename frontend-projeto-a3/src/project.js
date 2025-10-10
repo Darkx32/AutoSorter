@@ -12,4 +12,3 @@ const chart = new Chart(ctx, {
         ]
     }
 })
-console.log("1")

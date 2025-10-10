@@ -10,24 +10,32 @@ if (!app.requestSingleInstanceLock()) {
   process.exit(0);
 }
 
+let win;
 function createWindow() {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(dirname, "./preload.js")
+
     },
   });
   win.webContents.on("did-finish-load", () => {
     win.webContents.send("main-process-message", (new Date).toLocaleString())
   })
 
+  win.on("ready-to-show", () => {
+    win.maximize();
+    win.webContents.openDevTools();
+  })
+
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL)
-    win.webContents.openDevTools() 
+    
   }
 
   win.loadFile('./src/index.html');
+  win.setMenu(null);
 }
 
 app.on('window-all-closed', () => {
