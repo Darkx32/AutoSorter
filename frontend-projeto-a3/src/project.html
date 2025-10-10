@@ -18,14 +18,18 @@
   <main class="container">
     <h2 class="section-title">Visualização do Projeto</h2>
 
-        <!--Parte de demonstração né--> 
+<<<<<<< HEAD
+        <!--Demonstração--> 
+=======
+        <!--Demonstração --> 
+>>>>>>> origin/main
     <section class="card demo-card">
       <h3>📊 Demonstração</h3>
       <div class="procedural-animation">
         <canvas id="myChart"></canvas>
       </div>
     </section>
-         <!--Recursos, eu acho que vou tirar isso aqui-->
+         <!--Recursos-->
     <section class="card resources-card">
       <h3>⚡ Recursos</h3>
       <ul>
@@ -37,8 +41,62 @@
     </section>
   </main>
 
-       <!-- Isso aqui é o rodapé né-->
+       <!--Rodapé-->
   <footer class="footer">
     <p> Auto Sorter | Projeto A3 - Estrutura de dados</p>
     <a href="index.html" class="back-link">⬅ Voltar para apresentação</a>
   </footer
+
+<<<<<<< HEAD
+    <!-- Script JS com JSDoc -->
+=======
+  <!-- Script JS com JSDoc -->
+>>>>>>> origin/main
+    <script>
+      /**
+       * Adiciona um evento ao botão de demonstração.
+       * Quando clicado, simula a execução de um processo de classificação automática.
+       */
+      document.getElementById("botao-demo").addEventListener("click", () => {
+        /** 
+         * Elemento onde serão exibidas as mensagens da demonstração.
+         * @type {HTMLElement}
+         */
+        const demo = document.querySelector(".demo-placeholder");
+  
+        demo.textContent = "🚀 Iniciando demonstração automática...";
+  
+        /**
+         * Lista de mensagens que serão mostradas durante a simulação.
+         * @type {string[]}
+         */
+        const etapas = [
+          "🔍 Analisando dados...",
+          "⚙️ Classificando informações...",
+          "📊 Organizando resultados...",
+          "✅ Processo concluído com sucesso!"
+        ];
+  
+        /**
+         * Índice que controla a etapa atual da simulação.
+         * @type {number}
+         */
+        let i = 0;
+  
+        /**
+         * Intervalo responsável por exibir as mensagens da simulação
+         * em sequência a cada segundo. É encerrado quando todas
+         * as etapas são concluídas.
+         * @type {number}
+         */
+        const intervalo = setInterval(() => {
+          demo.textContent = etapas[i];
+          i++;
+  
+          if (i === etapas.length) clearInterval(intervalo);
+        }, 1000);
+      });
+    </script>
+  
+  </body>
+  </html>
