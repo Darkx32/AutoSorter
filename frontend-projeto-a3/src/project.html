@@ -1,102 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto - Auto Sorter</title>
-  <link rel="stylesheet" href="style2.css">  
-</head>
-<body>
-  <script src="project.js" type="module"></script>
-  <header class="header">
-    <div class="container">
-      <h1 class="title">Auto Sorter</h1>
-      <p class="subtitle">Demonstração do Projeto</p>
-    </div>
-  </header>
-
-  <main class="container">
-    <h2 class="section-title">Visualização do Projeto</h2>
-
-<<<<<<< HEAD
-        <!--Demonstração--> 
-=======
-        <!--Demonstração --> 
->>>>>>> origin/main
-    <section class="card demo-card">
-      <h3>📊 Demonstração</h3>
-      <div class="procedural-animation">
-        <canvas id="myChart"></canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto - Auto Sorter</title>
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+  <body>
+    <script src="project.js" type="module"></script>
+    <header class="header">
+      <div class="container">
+        <h1 class="title">Auto Sorter</h1>
+        <p class="subtitle">Demonstração do Projeto</p>
       </div>
-    </section>
-         <!--Recursos-->
-    <section class="card resources-card">
-      <h3>⚡ Recursos</h3>
-      <ul>
-        <li>Processamento rápido e automático</li>
-        <li>Organização inteligente de dados</li>
-        <li>Bla, bla, bla </li>
-        <li>Bla, Bla, Bla</li>
-      </ul>
-    </section>
-  </main>
+    </header>
 
-       <!--Rodapé-->
-  <footer class="footer">
-    <p> Auto Sorter | Projeto A3 - Estrutura de dados</p>
-    <a href="index.html" class="back-link">⬅ Voltar para apresentação</a>
-  </footer
+    <main class="container">
+      <h2 class="section-title">Visualização do Projeto</h2>
 
-<<<<<<< HEAD
-    <!-- Script JS com JSDoc -->
-=======
-  <!-- Script JS com JSDoc -->
->>>>>>> origin/main
-    <script>
-      /**
-       * Adiciona um evento ao botão de demonstração.
-       * Quando clicado, simula a execução de um processo de classificação automática.
-       */
-      document.getElementById("botao-demo").addEventListener("click", () => {
-        /** 
-         * Elemento onde serão exibidas as mensagens da demonstração.
-         * @type {HTMLElement}
-         */
-        const demo = document.querySelector(".demo-placeholder");
-  
-        demo.textContent = "🚀 Iniciando demonstração automática...";
-  
-        /**
-         * Lista de mensagens que serão mostradas durante a simulação.
-         * @type {string[]}
-         */
-        const etapas = [
-          "🔍 Analisando dados...",
-          "⚙️ Classificando informações...",
-          "📊 Organizando resultados...",
-          "✅ Processo concluído com sucesso!"
-        ];
-  
-        /**
-         * Índice que controla a etapa atual da simulação.
-         * @type {number}
-         */
-        let i = 0;
-  
-        /**
-         * Intervalo responsável por exibir as mensagens da simulação
-         * em sequência a cada segundo. É encerrado quando todas
-         * as etapas são concluídas.
-         * @type {number}
-         */
-        const intervalo = setInterval(() => {
-          demo.textContent = etapas[i];
-          i++;
-  
-          if (i === etapas.length) clearInterval(intervalo);
-        }, 1000);
-      });
-    </script>
-  
+      <!--Demonstração -->
+      <section class="card demo-card">
+        <h3>📊 Demonstração</h3>
+        <div class="procedural-animation">
+          <canvas id="myChart"></canvas>
+        </div>
+      </section>
+      <!--Recursos-->
+      <section class="card resources-card">
+        <h3>⚡ Recursos</h3>
+        <ul>
+          <li>Processamento rápido e automático</li>
+          <li>Organização inteligente de dados</li>
+        </ul>
+      </section>
+    </main>
+
+    <!--Rodapé-->
+    <footer class="footer">
+      <p>Auto Sorter | Projeto A3 - Estrutura de dados</p>
+      <a href="index.html" class="back-link">⬅ Voltar para apresentação</a>
+    </footer>
   </body>
-  </html>
+</html>
