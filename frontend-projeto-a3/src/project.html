@@ -42,3 +42,52 @@
     <p> Auto Sorter | Projeto A3 - Estrutura de dados</p>
     <a href="index.html" class="back-link">⬅ Voltar para apresentação</a>
   </footer
+  <!-- Script JS com JSDoc -->
+    <script>
+      /**
+       * Adiciona um evento ao botão de demonstração.
+       * Quando clicado, simula a execução de um processo de classificação automática.
+       */
+      document.getElementById("botao-demo").addEventListener("click", () => {
+        /** 
+         * Elemento onde serão exibidas as mensagens da demonstração.
+         * @type {HTMLElement}
+         */
+        const demo = document.querySelector(".demo-placeholder");
+  
+        demo.textContent = "🚀 Iniciando demonstração automática...";
+  
+        /**
+         * Lista de mensagens que serão mostradas durante a simulação.
+         * @type {string[]}
+         */
+        const etapas = [
+          "🔍 Analisando dados...",
+          "⚙️ Classificando informações...",
+          "📊 Organizando resultados...",
+          "✅ Processo concluído com sucesso!"
+        ];
+  
+        /**
+         * Índice que controla a etapa atual da simulação.
+         * @type {number}
+         */
+        let i = 0;
+  
+        /**
+         * Intervalo responsável por exibir as mensagens da simulação
+         * em sequência a cada segundo. É encerrado quando todas
+         * as etapas são concluídas.
+         * @type {number}
+         */
+        const intervalo = setInterval(() => {
+          demo.textContent = etapas[i];
+          i++;
+  
+          if (i === etapas.length) clearInterval(intervalo);
+        }, 1000);
+      });
+    </script>
+  
+  </body>
+  </html>
