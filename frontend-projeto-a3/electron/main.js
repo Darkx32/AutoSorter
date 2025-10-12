@@ -20,14 +20,22 @@ function createWindow() {
 
     },
   });
+
   win.webContents.on("did-finish-load", () => {
     win.webContents.send("main-process-message", (new Date).toLocaleString())
-  })
+  });
 
   win.on("ready-to-show", () => {
     win.maximize();
-    win.webContents.openDevTools();
-  })
+  });
+
+  win.webContents.on("before-input-event", (_, input) => {
+    if (input.type == "keyDown" && input.key == "F12") {
+      if (win.webContents.isDevToolsOpened())
+        win.webContents.closeDevTools();
+      else win.webContents.openDevTools();
+    }
+  });
 
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL)
