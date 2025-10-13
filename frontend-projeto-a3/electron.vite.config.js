@@ -8,7 +8,7 @@ export default defineConfig({
     build: {
       lib: {
         entry: "electron/main.js",
-      },
+      }
     },
   },
   preload: {
@@ -24,9 +24,6 @@ export default defineConfig({
       rollupOptions: {
         input: "src/index.html",
       },
-    },
-    optimizeDeps: {
-      include: ["chart.js", 'chart.js/auto', 'chart.js/dist/chart.esm.js', 'chart.js/dist/chart.umd.js'],
     },
     resolve: {
       alias: {
