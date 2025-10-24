@@ -1,4 +1,4 @@
-const ctx = document.getElementById("myChart").getContext("2d");
+const ctx = document.getElementById("myChart1").getContext("2d");
 
 const dados = [30, 80, 45, 60, 20, 90];
 const barWidth = 10; // Largura de cada barra

@@ -49,6 +49,7 @@ body {
 
 /* Cards padrão */
 .card {
+  text-align: center;
   background: #fdfdfd;
   border-radius: 14px;
   box-shadow: 0px 4px 14px rgba(0,0,0,0.2);
@@ -82,6 +83,17 @@ body {
   border: 2px dashed #6c5ce7;
   border-radius: 12px;
   background: #fafafa;
+  overflow: hidden;
+  box-sizing: border-box;  
+}
+
+.graph-container{
+  display: flex;
+  flex-wrap: wrap;         
+  justify-content: center;              
+  max-width: 800px;        
+  width: 100%;
+ box-sizing: content-box;
 }
 
 .demo-placeholder {
