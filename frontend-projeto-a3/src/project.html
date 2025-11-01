@@ -13,17 +13,29 @@
         <h1 class="title">Auto Sorter</h1>
         <p class="subtitle">Demonstração do Projeto</p>
       </div>
-    </header>
-
+    
     <main class="container">
       <h2 class="section-title">Visualização do Projeto</h2>
+    </header>
 
       <!--Demonstração -->
       <section class="card demo-card">
-        <h3>📊 Demonstração</h3>
+        <h3 style="font-size: 2.0rem;">📊 Demonstração</h3> <br>
+        <p class="subtitle">Bubble Sort</p>
+         <div class="controls">
+            <button onclick="startSort(1)" class="btn btn-success">▶️ Iniciar</button>
+            <button onclick="pauseSort(1)" class="btn btn-warning">⏸️ Pausar</button>
+            <button onclick="restartSort(1)" class="btn btn-info">🔄 Reiniciar</button>
+          </div>
         <div class="procedural-animation">
           <div class="graph-container">
             <canvas id="myChart1"></canvas>
+          </div>
+          <p class="subtitle">Selection Sort</p>
+           <div class="controls">
+            <button onclick="startSort(1)" class="btn btn-success">▶️ Iniciar</button>
+            <button onclick="pauseSort(1)" class="btn btn-warning">⏸️ Pausar</button>
+            <button onclick="restartSort(1)" class="btn btn-info">🔄 Reiniciar</button>
           </div>
         </div>
         <br>
@@ -31,11 +43,23 @@
           <div class="graph-container">
             <canvas id="myChart2"></canvas>
           </div>
+          <p class="subtitle">Insertion Sort</p>
+           <div class="controls">
+            <button onclick="startSort(1)" class="btn btn-success">▶️ Iniciar</button>
+            <button onclick="pauseSort(1)" class="btn btn-warning">⏸️ Pausar</button>
+            <button onclick="restartSort(1)" class="btn btn-info">🔄 Reiniciar</button>
+          </div>
         </div>
         <br>
         <div class="procedural-animation">
           <div class="graph-container">
             <canvas id="myChart3"></canvas>
+          </div>
+          <p class="subtitle">Merge Sort</p>
+           <div class="controls">
+            <button onclick="startSort(1)" class="btn btn-success">▶️ Iniciar</button>
+            <button onclick="pauseSort(1)" class="btn btn-warning">⏸️ Pausar</button>
+            <button onclick="restartSort(1)" class="btn btn-info">🔄 Reiniciar</button>
           </div>
         </div>
         <br>
@@ -43,11 +67,23 @@
           <div class="graph-container">
             <canvas id="myChart4"></canvas>
           </div>
+          <p class="subtitle">Quick Sort</p>
+           <div class="controls">
+            <button onclick="startSort(1)" class="btn btn-success">▶️ Iniciar</button>
+            <button onclick="pauseSort(1)" class="btn btn-warning">⏸️ Pausar</button>
+            <button onclick="restartSort(1)" class="btn btn-info">🔄 Reiniciar</button>
+          </div>
         </div>
         <br>
         <div class="procedural-animation">
           <div class="graph-container">
             <canvas id="myChart5"></canvas>
+          </div>
+          <p class="subtitle">Heap Sort</p>
+           <div class="controls">
+            <button onclick="startSort(1)" class="btn btn-success">▶️ Iniciar</button>
+            <button onclick="pauseSort(1)" class="btn btn-warning">⏸️ Pausar</button>
+            <button onclick="restartSort(1)" class="btn btn-info">🔄 Reiniciar</button>
           </div>
         </div>
         <br>
@@ -55,11 +91,23 @@
           <div class="graph-container">
             <canvas id="myChart6"></canvas>
           </div>
+          <p class="subtitle">Shell Sort</p>
+           <div class="controls">
+            <button onclick="startSort(1)" class="btn btn-success">▶️ Iniciar</button>
+            <button onclick="pauseSort(1)" class="btn btn-warning">⏸️ Pausar</button>
+            <button onclick="restartSort(1)" class="btn btn-info">🔄 Reiniciar</button>
+          </div>
         </div>
         <br>
         <div class="procedural-animation">
           <div class="graph-container">
             <canvas id="myChart7"></canvas>
+          </div>
+          <p class="subtitle">Counting Sort</p>
+           <div class="controls">
+            <button onclick="startSort(1)" class="btn btn-success">▶️ Iniciar</button>
+            <button onclick="pauseSort(1)" class="btn btn-warning">⏸️ Pausar</button>
+            <button onclick="restartSort(1)" class="btn btn-info">🔄 Reiniciar</button>
           </div>
         </div>
         <br>
@@ -82,8 +130,10 @@
 
     <!--Rodapé-->
     <footer class="footer">
-      <p>Auto Sorter | Projeto A3 - Estrutura de dados</p>
+      <p style="color: aliceblue; font-size: 1.5rem;"
+      >Auto Sorter | Projeto A3 - Estrutura de dados</p> <br>
       <a href="index.html" class="back-link">⬅ Voltar para apresentação</a>
     </footer>
+    <br>
   </body>
 </html>
