@@ -1,10 +1,10 @@
 // project.js - Sistema completo de visualização de algoritmos de ordenação
 
 class SortVisualizer {
-  constructor(canvasId, algorithmName) {
+  constructor(canvasId, startFunction) {
     this.canvas = document.getElementById(canvasId);
     this.ctx = this.canvas.getContext('2d');
-    this.algorithmName = algorithmName;
+    this.startFunction = startFunction;
     
     // Configurações
     this.arraySize = 1000;
@@ -48,10 +48,10 @@ class SortVisualizer {
     // Desenhar nome do algoritmo
     this.ctx.fillStyle = '#333';
     this.ctx.font = 'bold 16px Arial';
-    this.ctx.fillText(this.algorithmName, 10, 20);
   }
   
   async start() {
+    this.startFunction();
   }
   
   pause() {
@@ -74,16 +74,26 @@ class SortVisualizer {
 
 // ==================== INICIALIZAÇÃO ====================
 
+const vizMap = {
+  1: "bubble", 2: "selection", 3: "insertion", 4: "merge", 5: "quick", 6: "heap",
+  7: "shell", 8: "counting"
+};
 let visualizers = {};
 
 window.addEventListener('DOMContentLoaded', () => {
   // Criar visualizadores para cada algoritmo
-  visualizers.bubble = new SortVisualizer('myChart1', ''); // Bubble Sort
-  visualizers.selection = new SortVisualizer('myChart2', ''); // Selection Sort
-  visualizers.insertion = new SortVisualizer('myChart3', ''); // Insertion Sort
-  visualizers.merge = new SortVisualizer('myChart4', ''); // Merge Sort
-  visualizers.quick = new SortVisualizer('myChart5', ''); // Quick Sort
-  visualizers.heap = new SortVisualizer('myChart6', ''); // Heap Sort
-  visualizers.shell = new SortVisualizer('myChart7', ''); // Shell Sort
-  visualizers.counting = new SortVisualizer('myChart8', ''); //Counting Sort
+  visualizers.bubble = new SortVisualizer('myChart1', () => {runBubble()}); // Bubble Sort
+  visualizers.selection = new SortVisualizer('myChart2', () => {}); // Selection Sort
+  visualizers.insertion = new SortVisualizer('myChart3', () => {}); // Insertion Sort
+  visualizers.merge = new SortVisualizer('myChart4', () => {}); // Merge Sort
+  visualizers.quick = new SortVisualizer('myChart5', () => {}); // Quick Sort
+  visualizers.heap = new SortVisualizer('myChart6', () => {}); // Heap Sort
+  visualizers.shell = new SortVisualizer('myChart7', () => {}); // Shell Sort
+  visualizers.counting = new SortVisualizer('myChart8', () => {}); //Counting Sort
 });
+
+function startById(chartNumber) {
+  visualizers[vizMap[chartNumber]].start();
+}
+
+window.startById = startById;
