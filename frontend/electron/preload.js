@@ -9,7 +9,7 @@ const path = require("path");
     locateFile: () => wasmPath
   });
 
-  const sqrt = Module.cwrap("soma", "number", ["number"]);
+  const sqrt = Module.cwrap("sqrt_cpp", "number", ["number"]);
   contextBridge.exposeInMainWorld("WASM", {
     sqrt: (x) => sqrt(x)
   });

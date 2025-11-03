@@ -1,8 +1,8 @@
 #include <emscripten/emscripten.h>
+#include <cmath>
 
 extern "C" {
-    EMSCRIPTEN_KEEPALIVE
-    int sqrt(int x) {
+    int sqrt_cpp(int x) {
         return sqrt(x);
     }
 }
