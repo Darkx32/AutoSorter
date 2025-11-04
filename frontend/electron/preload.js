@@ -9,8 +9,30 @@ const path = require("path");
     locateFile: () => wasmPath
   });
 
-  const sqrt = Module.cwrap("sqrt_cpp", "number", ["number"]);
+  const is_sorted = Module.cwrap("is_sorted", "boolean", ["number", "number"]);
   contextBridge.exposeInMainWorld("WASM", {
-    sqrt: (x) => sqrt(x)
+    sort_test: (data) => {
+      const sBytes = data.length * Int32Array.BYTES_PER_ELEMENT;
+      const ptr = Module._malloc(sBytes);
+
+      Module.HEAP32.set(data, ptr / Int32Array.BYTES_PER_ELEMENT);
+      Module._bubble_sort(ptr, data.length);
+
+      const result = new Int32Array(Module.HEAP32.buffer, ptr, data.length);
+
+      Module._free(ptr);
+
+      return Array.from(result);
+    },
+    is_sorted: (data) => {
+      const sBytes = data.length * Int32Array.BYTES_PER_ELEMENT;
+      const ptr = Module._malloc(sBytes);
+
+      Module.HEAP32.set(data, ptr / Int32Array.BYTES_PER_ELEMENT);
+      const result = is_sorted(ptr, data.length);
+
+      Module._free(ptr);
+      return result;
+    }
   });
 })();
