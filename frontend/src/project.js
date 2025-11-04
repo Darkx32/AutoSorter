@@ -57,10 +57,9 @@ class SortVisualizer {
         this.data = result;
         this.draw();
       }
-      await this.sleep(50);
+      await this.sleep(10);
       if (isSorted(this.data))
         this.isRunning = false;
-      
     }
   }
   
@@ -69,7 +68,7 @@ class SortVisualizer {
   }
   
   restart() {
-    this.isRunning = true;
+    this.isRunning = false;
     this.isPaused = false;
     this.generateRandomData();
     this.draw();
