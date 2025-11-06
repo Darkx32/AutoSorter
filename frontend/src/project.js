@@ -1,116 +1,130 @@
-// project.js - Sistema completo de visualização de algoritmos de ordenação
-
-class SortVisualizer {
-  constructor(canvasId, startFunction) {
-    this.canvas = document.getElementById(canvasId);
+class VisualizadorDeOrdenacao {
+  constructor(idCanvas, funcaoDeInicio) {
+    this.canvas = document.getElementById(idCanvas);
     this.ctx = this.canvas.getContext('2d');
-    this.startFunction = startFunction;
+    this.funcaoDeInicio = funcaoDeInicio;
     
-    // Configurações
-    this.arraySize = 1000;
-    this.data = [];
-    this.originalData = [];
-    this.isRunning = false;
-    this.isPaused = false;
+    this.tamanhoArray = 1000;
+    this.dados = [];
+    this.dadosOriginais = [];
+    this.emExecucao = false;
+    this.emPausa = false;
     
-    // Configurar canvas
+    this.trocas = 0;
+    this.tempoInicio = 0;
+    this.tempoPassado = 0;
+    
     this.canvas.width = 1000;
     this.canvas.height = 300;
     
-    // Inicializar
-    this.generateRandomData();
-    this.draw();
+    this.gerarDadosAleatorios();
+    this.desenhar();
   }
   
-  generateRandomData() {
-    this.data = [];
-    for (let i = 0; i < this.arraySize; i++) {
-      this.data.push(Math.floor(Math.random() * this.canvas.height) + 1);
+  gerarDadosAleatorios() {
+    this.dados = [];
+    for (let i = 0; i < this.tamanhoArray; i++) {
+      this.dados.push(Math.floor(Math.random() * this.canvas.height) + 1);
     }
-    this.originalData = [...this.data];
+    this.dadosOriginais = [...this.dados];
+    this.trocas = 0;
+    this.tempoPassado = 0;
   }
   
-  draw() {
+  desenhar() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    const larguraBarra = this.canvas.width / this.tamanhoArray;
     
-    const barWidth = this.canvas.width / this.arraySize;
-    
-    this.data.forEach((value, index) => {
-        this.ctx.fillStyle = '#2196f3';
-        const x = index * barWidth;
-        const y = this.canvas.height - value;
-      
-        this.ctx.fillRect(x, y, barWidth - 0.5, value);
+    this.dados.forEach((valor, i) => {
+      this.ctx.fillStyle = '#2196f3';
+      const x = i * larguraBarra;
+      const y = this.canvas.height - valor;
+      this.ctx.fillRect(x, y, larguraBarra - 0.5, valor);
     });
-    
+
     this.ctx.fillStyle = '#333';
     this.ctx.font = 'bold 16px Arial';
+    this.ctx.fillText(`Trocas: ${this.trocas}`, 900, 20);
+    this.ctx.fillText(`Tempo: ${(this.tempoPassado / 1000).toFixed(2)}s`, 900, 40);
   }
   
-  async start() {
-    if (this.isRunning) return;
+  async iniciar() {
+    if (this.emExecucao) return;
 
-    this.isRunning = true;
-    while (this.isRunning) {
-      if (!this.isPaused) {
-        const result = this.startFunction(this.data);
-        this.data = result;
-        this.draw();
-      }
-      await this.sleep(10);
-      if (isSorted(this.data))
-        this.isRunning = false;
-    }
+    this.emExecucao = true;
+    this.tempoInicio = performance.now();
+
+    const resultado = await this.funcaoDeInicio(this.dados, (trocas) => {
+      this.trocas = trocas;
+      this.desenhar();
+    });
+
+    this.dados = resultado;
+    this.emExecucao = false;
+    this.tempoPassado = performance.now() - this.tempoInicio;
+    this.desenhar();
   }
   
-  pause() {
-    this.isPaused = !this.isPaused;
+  pausar() {
+    this.emPausa = !this.emPausa;
   }
   
-  restart() {
-    this.isRunning = false;
-    this.isPaused = false;
-    this.generateRandomData();
-    this.draw();
+  reiniciar() {
+    this.emExecucao = false;
+    this.emPausa = false;
+    this.gerarDadosAleatorios();
+    this.desenhar();
   }
   
-  sleep(ms) {
+  esperar(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
 
-// ==================== INICIALIZAÇÃO ====================
+async function bubbleSort(arr, atualizarTrocas) {
+  let dados = [...arr];
+  let trocas = 0;
 
-const vizMap = {
-  1: "bubble", 2: "selection", 3: "insertion", 4: "merge", 5: "quick", 6: "heap",
-  7: "shell", 8: "counting"
+  for (let i = 0; i < dados.length; i++) {
+    for (let j = 0; j < dados.length - i - 1; j++) {
+      if (dados[j] > dados[j + 1]) {
+        [dados[j], dados[j + 1]] = [dados[j + 1], dados[j]];
+        trocas++;
+        atualizarTrocas(trocas);
+        await esperar(1);
+      }
+    }
+  }
+  return dados;
+}
+
+function esperar(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const mapeamento = {
+  1: "bubble", 2: "quick"
 };
-let visualizers = {};
+
+let visualizadores = {};
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Criar visualizadores para cada algoritmo
-  visualizers.bubble = new SortVisualizer('myChart1', runBubble); // Bubble Sort
-  visualizers.selection = new SortVisualizer('myChart2', () => {}); // Selection Sort
-  visualizers.insertion = new SortVisualizer('myChart3', () => {}); // Insertion Sort
-  visualizers.merge = new SortVisualizer('myChart4', () => {}); // Merge Sort
-  visualizers.quick = new SortVisualizer('myChart5', () => {}); // Quick Sort
-  visualizers.heap = new SortVisualizer('myChart6', () => {}); // Heap Sort
-  visualizers.shell = new SortVisualizer('myChart7', () => {}); // Shell Sort
-  visualizers.counting = new SortVisualizer('myChart8', () => {}); //Counting Sort
+  visualizadores.bubble = new VisualizadorDeOrdenacao('meuGrafico1', bubbleSort);
+  visualizadores.quick = new VisualizadorDeOrdenacao('meuGrafico2', () => {});
 });
 
-function startById(chartNumber) {
-  visualizers[vizMap[chartNumber]].start();
+function iniciarPeloId(numeroGrafico) {
+  visualizadores[mapeamento[numeroGrafico]].iniciar();
 }
 
-function pauseById(chartNumber) {
-  visualizers[vizMap[chartNumber]].pause();
+function pausarPeloId(numeroGrafico) {
+  visualizadores[mapeamento[numeroGrafico]].pausar();
 }
 
-function restartById(chartNumber) {
-  visualizers[vizMap[chartNumber]].restart();
+function reiniciarPeloId(numeroGrafico) {
+  visualizadores[mapeamento[numeroGrafico]].reiniciar();
 }
 
-window.startById = startById;
-window.pauseById = pauseById;
-window.restartById = restartById;
+window.iniciarPeloId = iniciarPeloId;
+window.pausarPeloId = pausarPeloId;
+window.reiniciarPeloId = reiniciarPeloId;
