@@ -1,130 +1,112 @@
-class VisualizadorDeOrdenacao {
-  constructor(idCanvas, funcaoDeInicio) {
-    this.canvas = document.getElementById(idCanvas);
+class SortVisualizer {
+  constructor(canvasId, startFunction, resetFunction) {
+    this.canvas = document.getElementById(canvasId);
     this.ctx = this.canvas.getContext('2d');
-    this.funcaoDeInicio = funcaoDeInicio;
-    
-    this.tamanhoArray = 1000;
-    this.dados = [];
-    this.dadosOriginais = [];
-    this.emExecucao = false;
-    this.emPausa = false;
-    
-    this.trocas = 0;
-    this.tempoInicio = 0;
-    this.tempoPassado = 0;
-    
+    this.startFunction = startFunction;
+    this.resetFunction = resetFunction;
+
+    this.arraySize = 1000;
+    this.data = [];
+    this.isRunning = false;
+    this.isPaused = false;
+    this.iteractionCount = 0;
+    this.timePassed = 0;
+
     this.canvas.width = 1000;
     this.canvas.height = 300;
-    
-    this.gerarDadosAleatorios();
-    this.desenhar();
+
+    this.generateRandomData();
+    this.draw();
   }
-  
-  gerarDadosAleatorios() {
-    this.dados = [];
-    for (let i = 0; i < this.tamanhoArray; i++) {
-      this.dados.push(Math.floor(Math.random() * this.canvas.height) + 1);
+
+  generateRandomData() {
+    this.data = [];
+    for (let i = 0; i < this.arraySize; i++) {
+      this.data.push(Math.floor(Math.random() * this.canvas.height) + 1);
     }
-    this.dadosOriginais = [...this.dados];
-    this.trocas = 0;
-    this.tempoPassado = 0;
   }
-  
-  desenhar() {
+
+  draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    const larguraBarra = this.canvas.width / this.tamanhoArray;
-    
-    this.dados.forEach((valor, i) => {
-      this.ctx.fillStyle = '#2196f3';
-      const x = i * larguraBarra;
-      const y = this.canvas.height - valor;
-      this.ctx.fillRect(x, y, larguraBarra - 0.5, valor);
+
+    const barWidth = this.canvas.width / this.arraySize;
+
+    this.data.forEach((value, index) => {
+        this.ctx.fillStyle = '#2196f3';
+        const x = index * barWidth;
+        const y = this.canvas.height - value;
+
+        this.ctx.fillRect(x, y, barWidth - 0.5, value);
     });
 
     this.ctx.fillStyle = '#333';
     this.ctx.font = 'bold 16px Arial';
-    this.ctx.fillText(`Trocas: ${this.trocas}`, 900, 20);
-    this.ctx.fillText(`Tempo: ${(this.tempoPassado / 1000).toFixed(2)}s`, 900, 40);
+    this.ctx.fillText(`Trocas: ${this.iteractionCount}`, 900, 20);
+    this.ctx.fillText(`Tempo: ${(this.timePassed / 1000).toFixed(2)}s`, 900, 40);
   }
-  
-  async iniciar() {
-    if (this.emExecucao) return;
 
-    this.emExecucao = true;
-    this.tempoInicio = performance.now();
+  async start() {
+    if (this.isRunning) return;
 
-    const resultado = await this.funcaoDeInicio(this.dados, (trocas) => {
-      this.trocas = trocas;
-      this.desenhar();
-    });
+    this.isRunning = true;
+    while (this.isRunning) {
+      if (!this.isPaused) {
+        const startTime = new Date();
+        const result = this.startFunction(this.data);
+        
+        this.data = result;
+        this.draw();
 
-    this.dados = resultado;
-    this.emExecucao = false;
-    this.tempoPassado = performance.now() - this.tempoInicio;
-    this.desenhar();
+        this.timePassed += new Date().getTime() - startTime.getTime();
+        this.iteractionCount++;
+      }
+      await this.sleep(10);
+      if (isSorted(this.data))
+        this.isRunning = false;
+    }
   }
-  
-  pausar() {
-    this.emPausa = !this.emPausa;
+
+  pause() {
+    this.isPaused = !this.isPaused;
   }
-  
-  reiniciar() {
-    this.emExecucao = false;
-    this.emPausa = false;
-    this.gerarDadosAleatorios();
-    this.desenhar();
+
+  restart() {
+    this.isRunning = false;
+    this.isPaused = false;
+    this.iteractionCount = 0;
+    this.timePassed = 0;
+    this.generateRandomData();
+    this.draw();
+    this.resetFunction();
   }
-  
-  esperar(ms) {
+
+  sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
 
-async function bubbleSort(arr, atualizarTrocas) {
-  let dados = [...arr];
-  let trocas = 0;
-
-  for (let i = 0; i < dados.length; i++) {
-    for (let j = 0; j < dados.length - i - 1; j++) {
-      if (dados[j] > dados[j + 1]) {
-        [dados[j], dados[j + 1]] = [dados[j + 1], dados[j]];
-        trocas++;
-        atualizarTrocas(trocas);
-        await esperar(1);
-      }
-    }
-  }
-  return dados;
-}
-
-function esperar(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-const mapeamento = {
+const vizMap = {
   1: "bubble", 2: "quick"
 };
-
-let visualizadores = {};
+let visualizers = {};
 
 window.addEventListener('DOMContentLoaded', () => {
-  visualizadores.bubble = new VisualizadorDeOrdenacao('meuGrafico1', bubbleSort);
-  visualizadores.quick = new VisualizadorDeOrdenacao('meuGrafico2', () => {});
+  visualizers.bubble = new SortVisualizer('bubbleCanva', runBubble, () => {});
+  visualizers.quick = new SortVisualizer('quickCanva', runQuick, resetQuick);
 });
 
-function iniciarPeloId(numeroGrafico) {
-  visualizadores[mapeamento[numeroGrafico]].iniciar();
+function startById(chartNumber) {
+  visualizers[vizMap[chartNumber]].start();
 }
 
-function pausarPeloId(numeroGrafico) {
-  visualizadores[mapeamento[numeroGrafico]].pausar();
+function pauseById(chartNumber) {
+  visualizers[vizMap[chartNumber]].pause();
 }
 
-function reiniciarPeloId(numeroGrafico) {
-  visualizadores[mapeamento[numeroGrafico]].reiniciar();
+function restartById(chartNumber) {
+  visualizers[vizMap[chartNumber]].restart();
 }
 
-window.iniciarPeloId = iniciarPeloId;
-window.pausarPeloId = pausarPeloId;
-window.reiniciarPeloId = reiniciarPeloId;
+window.startById = startById;
+window.pauseById = pauseById;
+window.restartById = restartById;

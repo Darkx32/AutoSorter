@@ -10,15 +10,29 @@ const path = require("path");
   });
 
   const is_sorted = Module.cwrap("is_sorted", "boolean", ["number", "number"]);
+  const reset_quick_sort_state = Module.cwrap("reset_quick_sort_state", "void", []);
   contextBridge.exposeInMainWorld("WASM", {
-    sort_test: (data) => {
+    bubble_sort: (data) => {
       const sBytes = data.length * Int32Array.BYTES_PER_ELEMENT;
       const ptr = Module._malloc(sBytes);
 
       Module.HEAP32.set(data, ptr / Int32Array.BYTES_PER_ELEMENT);
       Module._bubble_sort(ptr, data.length);
 
-      const result = new Int32Array(Module.HEAP32.buffer, ptr, data.length);
+      const result = new Int32Array(Module.HEAP32.buffer, ptr, data.length).slice();
+
+      Module._free(ptr);
+
+      return Array.from(result);
+    },
+    quick_sort: (data) => {
+      const sBytes = data.length * Int32Array.BYTES_PER_ELEMENT;
+      const ptr = Module._malloc(sBytes);
+
+      Module.HEAP32.set(data, ptr / Int32Array.BYTES_PER_ELEMENT);
+      Module._quick_sort(ptr, data.length);
+
+      const result = new Int32Array(Module.HEAP32.buffer, ptr, data.length).slice();
 
       Module._free(ptr);
 
@@ -33,6 +47,9 @@ const path = require("path");
 
       Module._free(ptr);
       return result;
+    },
+    reset_quick_sort_state: () => {
+      reset_quick_sort_state()
     }
   });
 })();
