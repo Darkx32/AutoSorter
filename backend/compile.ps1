@@ -1,7 +1,7 @@
 $outputFilename = "sorts.js"
 $outputPath = ".\backend\out"
 $mainPath = ".\backend\main.cpp"
-$funcToExport = '["_malloc", "_free", "_bubble_sort", "_is_sorted"]'
+$funcToExport = '["_malloc", "_free", "_bubble_sort", "_is_sorted", "_quick_sort", "_reset_quick_sort_state"]'
 
 if (-not (Test-Path $outputPath -PathType Container)) {
     New-Item -Path $outputPath -ItemType Directory | Out-Null
