@@ -4,12 +4,19 @@
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+/* Reset e configuração global
+  Remove as margens e espaçamentos padrão, define os box-sizing e a fonte principal.
+*/
 
 body {
   background: linear-gradient(to bottom, #07224d, #07224d);
   color: #333;
   line-height: 1.6;
 }
+
+/* É o corpo da página 
+  Ela que define o fundo, cor do texto e espaçamento padrão entre linhas.
+*/
 
 .container {
   width: 90%;
@@ -18,11 +25,19 @@ body {
   padding: 2rem 0;
 }
 
+/* Container principal 
+  Centraliza o conteúdo e define largura máxima.
+*/
+
 .header {
   text-align: center;
   padding: 2rem 0;
   color: #fff;
 }
+
+/* Cabeçalho principal 
+  Centraliza o texto e aplica a cor branca.
+*/
 
 .back-link {
   display: inline-block; 
@@ -44,11 +59,19 @@ body {
   z-index: 1000;
 }
 
+/* 
+  Botão de voltar 
+  Fixa no canto superior esquerdo com um estilo moderno e responsivo.
+*/
+
+
+/*Titulo principal*/
 .title {
   font-size: 2.9rem;
   font-weight: bold;
 }
 
+/*Subtitulo*/
 .subtitle {
   font-size: 1.9rem;
   opacity: 0.8;
@@ -62,6 +85,11 @@ body {
   margin: 2rem 0;
 }
 
+/* Título de seção 
+  Centralizado e em destaque.
+*/
+
+
 .card {
   text-align: center;
   background: #fdfdfd;
@@ -72,6 +100,10 @@ body {
   transition: transform 0.2s;
 }
 
+/* Cartão de conteúdo 
+  Define o layout e aparência dos blocos principais.
+*/
+
 .card h3 {
   margin-bottom: 2rem;
   font-size: 1.2rem;
@@ -79,9 +111,14 @@ body {
   text-align: center;
 }
 
+/* Título dentro dos cartões */
+
+
 .demo-card {
   max-width: 1050px;
 }
+
+/* Cartão de demonstração com largura máxima */
 
 .chart-section {
   margin-bottom: 3rem;
@@ -91,6 +128,14 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* Seção dos gráficos 
+  Área com fundo claro e bordas arredondadas.
+*/
+
+
+/*Contêiner do gráfico 
+  Centraliza o canvas e aplica borda e fundo branco.
+*/
 .graph-container {
   display: flex;
   justify-content: center;
@@ -109,6 +154,7 @@ body {
   display: block;
 }
 
+
 .controls {
   display: flex;
   justify-content: center;
@@ -116,6 +162,11 @@ body {
   flex-wrap: wrap;
   padding: 1rem 0;
 }
+
+/*Controles (botões de ação) 
+  Alinha os botões e define espaçamento.
+*/
+
 
 .btn {
   padding: 0.75rem 1.5rem;
@@ -130,6 +181,12 @@ body {
   min-width: 120px;
 }
 
+/* Botões padrão 
+  Aparência geral e transições suaves.
+*/
+
+
+/*Efeitos de hover e clique*/
 .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -139,6 +196,11 @@ body {
   transform: translateY(0);
   box-shadow: 0 2px 3px rgba(0,0,0,0.2);
 }
+
+
+/* Variações de cor dos botões 
+  Cada classe aplica um gradiente diferente.
+*/
 
 .btn-success {
   background: linear-gradient(135deg, #14892f, #14892f);
@@ -178,6 +240,9 @@ body {
   margin-top: 3rem;
 }
 
+/* Cartão de recursos 
+  Lista de materiais e links úteis.
+*/
 .resources-card h3 {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -202,6 +267,13 @@ body {
   background: #e8e8e8;
   transform: translateX(5px);
 }
+
+
+/* Rodapé 
+  Texto centralizado e links estilizados.
+*/
+
+
 .footer {
   text-align: center;
   padding: 1.5rem;
@@ -220,6 +292,10 @@ body {
   color: #02230e;
   text-decoration: underline;
 }
+
+/* Responsividade 
+  Ajusta o layout e os botões para as tela menores
+*/
 
 @media (max-width: 768px) {
   .controls {

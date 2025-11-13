@@ -3,17 +3,26 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/**
+ * Remove margens e paddings padrão
+ * Aplica box-sizing para o melhor controle de layout.
+ */
 
 .logo-unifg {
   margin-top: 10px;
   text-align: center;
 }
+/* LOGO E CABEÇALHO
+ * Centraliza o logotipo da UnifG e aplica a margem superior.
+ */
 
 .logo-unifg img {
   max-width: 220px; 
   height: auto;
 }
+/**
+ * Define o tamanho máximo do logotipo, mantendo a sua proporção.
+ */
 
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -22,6 +31,9 @@ body {
     color: #333;
     line-height: 1.6;
 }
+/* CORPO E CONTAINERS 
+ * Define a fonte principal, plano de fundo e a altura mínima da tela.
+ */
 
 .container {
     max-width: 1200px;
@@ -30,6 +42,10 @@ body {
     text-align: center;
 }
 
+/**
+ * Define o contêiner principal centralizado com o espaçamento interno.
+ */
+
 h1 {
     font-size: 2.5rem;
     color: white;
@@ -37,18 +53,32 @@ h1 {
     text-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
+/**
+ * Um estilo para o título principal.
+ */
+
 .container p {
     color: rgba(255,255,255,0.9);
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+/**
+ * Os parágrafos dentro do container principal.
+ */
 
+
+
+ /* =============================
+   SEÇÕES E CARDS
+   ============================= */
 main {
     background: white;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     margin-top: 2rem;
 }
+
+
 
 .section-header, .cabecalho-secao {
     margin-bottom: 2rem;
@@ -67,6 +97,14 @@ h2 {
     margin-bottom: 3rem;
 }
 
+/*GRID DE PROJETOS
+ * Define o layout responsável para a exibição de múltiplos cards.
+ */
+
+
+ /**
+ * Estilo dos cards do projeto.
+ */
 .projetos-card {
     background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
     padding: 2rem;
@@ -88,13 +126,20 @@ h2 {
 .about-project{
     color: #2d3748 !important;
 }
+
 .etapas {
     color: #2d3748 !important;
+
 }
+
+/* =============================
+   LINHA DO TEMPO
+   ============================= */
 .linha-tempo {
     position: relative;
     margin: 2rem 0;
-}
+    }
+
 
 .linha-tempo::before {
     content: '';
@@ -131,6 +176,10 @@ h2 {
     z-index: 2;
 }
 
+
+/**
+ * Caixa do conteúdo da linha do tempo.
+ */
 .conteudo-linha-tempo {
     background: white;
     padding: 1.5rem;
@@ -154,6 +203,9 @@ h2 {
     font-size: 1.2rem;
 }
 
+/* =============================
+   GRID DE FERRAMENTAS
+   ============================= */
 .grade-ferramentas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -198,12 +250,15 @@ h2 {
     cursor: pointer;
 }
 
-
 .card-link{
     text-decoration: none;
     color: inherit;
     display: inline-block;
 }
+
+/* =============================
+   GRID DE FERRAMENTAS
+   ============================= */
 
 .team-grid {
     display: grid;
@@ -256,6 +311,10 @@ h2 {
     font-size: 1rem;
 }
 
+/* =============================
+   RODAPÉ
+   ============================= */
+
 footer{
   background-color: #200056(117, 190, 218, 0.5);
   color: white;
@@ -263,6 +322,10 @@ footer{
   padding: 15px;
   font-family: Arial, sans-serif;
 }
+
+/* =============================
+   RESPONSIVIDADE
+   ============================= */
 
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
@@ -274,6 +337,10 @@ footer{
     .conteudo-linha-tempo { width: calc(100% - 60px); margin-left: 60px !important; margin-right: 0 !important; }
     .grade-ferramentas { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* =============================
+   BOTÃO E CALL TO ACTION
+   ============================= */
 
 .call-to-action {
     text-align: center; 
