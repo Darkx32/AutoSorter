@@ -38,15 +38,6 @@ Nessa aplicação usamos dois tipos de algoritmos de ordenação para ordenar es
  • Rode o arquivo run.ps1 , em caso de não funcionalidade siga as intruções para Download;
 
 
-    Instalação :
-
-Siga os passos abaixo para configurar o ambiente de desenvolvimento da aplicação :
-
-1. clone o repositório : 
-
-   https://github.com/Darkx32/AutoSorter.git
-
-
 Autores :
  
  • Matheus Gomes Santos; 
