@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "es6",
+        "checkJs": true
+    },
+    "include": [
+        "frontend/src/*.js"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

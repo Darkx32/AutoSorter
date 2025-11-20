@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projeto - Auto Sorter</title>
-    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="project.css" />
     <script type="module" src="./setupSorts.js"></script>
     <script type="module" src="./project.js"></script>
+    <script type="module" src="./binaryTree.js"></script>
   </head>
   <body>
     <header class="header">
@@ -45,7 +46,17 @@
             <canvas id="quickCanva"></canvas>
           </div>
         </div>
-
+        <p class="subtitle">Binary Tree</p>
+        <div class="tree-controls">
+          <input type="number" id="valueInput">
+          <button id="insertBtn">Inserir</button>
+          <button id="restartBtn">Restart</button>
+        </div>
+        <div class="procedural-animation">
+          <div class="graph-container">
+            <canvas id="binaryCanva"></canvas>
+          </div>
+        </div>
       </section>
 
 

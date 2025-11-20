@@ -1,5 +1,4 @@
 const { contextBridge } = require("electron");
-const path = require("path");
 
 (async () => {
   const ModuleFactory = (await import("../../backend/out/sorts.js")).default;
