@@ -1,7 +1,5 @@
 //importa o contexBridge do electron para expor APIs seguras 
 const { contextBridge } = require("electron");
-//importa manipulação de caminhos
-const path = require("path");
 
 //permite async/await na parte superior
 (async () => {
