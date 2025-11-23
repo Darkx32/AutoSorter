@@ -1,39 +1,75 @@
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projeto - Auto Sorter</title>
+    <meta charset="UTF-8" />  <!-- Charset UTF-8 para suportar caracteres em português --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />     <!-- Responsividade para dispositivos móveis -->
+    <title>Projeto - Auto Sorter</title>       <!-- Título exibido na aba do navegador -->
+
+    <!-- Importa o estilo específico desta página -->
     <link rel="stylesheet" href="project.css" />
+
+    <!-- Scripts principais do projeto que inicializam os sorts e a árvore -->
     <script type="module" src="./setupSorts.js"></script>
     <script type="module" src="./project.js"></script>
     <script type="module" src="./binaryTree.js"></script>
   </head>
   <body>
+
+
+     <!--cabeçalho da página -->
+
+
+    <!--link para voltar ao index-->
     <header class="header">
           <a href="index.html" class="back-link">↩</a>
+
+     <!--titulo principal do sistema-->
       <div class="container">
         <h1 class="title">Auto Sorter</h1>
       </div>
     
+      <!-- Título da seção de visualização -->
     <main class="container">
       <h2 class="section-title">Visualização do Projeto</h2>
     </header>
 
 
+      <!-- Card principal da página -->
       <section class="card demo-card">
+        <!-- Título da área de demonstração -->
         <h3 style="font-size: 2.0rem;">📊 Demonstração</h3> <br>
+
+    
+      <!-- ============================ -->
+      <!--           BUBBLE SORT        -->
+      <!-- ============================ -->
+
+
         <p class="subtitle">Bubble Sort</p>
+
+        <!-- Botões de controle do Bubble Sort -->
          <div class="controls">
             <button onclick="startById(1)" class="btn btn-success">▶️ Iniciar</button>
             <button onclick="pauseById(1)" class="btn btn-warning">⏸️ Pausar</button>
             <button onclick="restartById(1)" class="btn btn-info">🔄 Reiniciar</button>
           </div>
+
+          <!-- Área onde o Bubble Sort é desenhado -->
         <div class="procedural-animation">
           <div class="graph-container">
             <canvas id="bubbleCanva"></canvas>
           </div>
+
+          
+        <!-- ============================ -->
+        <!--            QUICK SORT        -->
+        <!-- ============================ -->
+
+
           <p class="subtitle">Quick Sort</p>
+
+          <!-- Botões de controle do Quick Sort -->
            <div class="controls">
             <button onclick="startById(2)" class="btn btn-success">▶️ Iniciar</button>
             <button onclick="pauseById(2)" class="btn btn-warning">⏸️ Pausar</button>
@@ -41,17 +77,34 @@
           </div>
         </div>
         <br>
+
+        <!-- Área onde o Quick Sort é desenhado -->
         <div class="procedural-animation">
           <div class="graph-container">
             <canvas id="quickCanva"></canvas>
           </div>
         </div>
+
+        
+      <!-- ============================ -->
+      <!--         ÁRVORE BINÁRIA       -->
+      <!-- ============================ -->
+
+
         <p class="subtitle">Binary Tree</p>
+
+         <!-- Controles da árvore binária -->
         <div class="tree-controls">
+
+          <!-- Input para inserir novo valor -->
           <input type="number" id="valueInput">
+
+          <!-- Botões de inserção e reinício -->
           <button id="insertBtn">Inserir</button>
           <button id="restartBtn">Restart</button>
         </div>
+
+        <!-- Área onde a árvore binária é desenhada -->
         <div class="procedural-animation">
           <div class="graph-container">
             <canvas id="binaryCanva"></canvas>
@@ -60,6 +113,7 @@
       </section>
 
 
+   <!-- seção de recursos -->
       <section class="card resources-card">
         <h3>⚡ Recursos</h3>
         <ul>
@@ -70,6 +124,7 @@
     </main>
 
 
+     <!-- Rodapé com informações do projeto -->
     <footer class="footer">
       <p style="color: aliceblue; font-size: 1.5rem;"
       >Auto Sorter | Projeto A3 - Estrutura de dados</p> <br>
